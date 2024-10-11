@@ -2,160 +2,72 @@
 #include <Windows.h>
 
 
-
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	int Six;
-	int num1, num2, num3, num4, num5, num6;
-	int general, general2;
 
-	std::cout << "задание 1\nВведите шестизначное число: ";
-	std::cin >> Six;
+	float Rus, USD, euro, farit, tenge, commission, currency;
+	int exchange = 1, inquiry;
 
-	num1 = int(Six / 100000);
-	num2 = int(Six % 100000 / 10000);
-	num3= int(Six % 100000 % 10000 / 1000);
-	num4 = int(Six % 100000 % 10000 % 1000 / 100);
-	num5 = int(Six % 100000 % 10000 % 1000 % 100 / 10);
-	num6 = Six % 10;
-	general = num1 + num2 + num3;
-	general2 = num4 + num5 + num6;
-
-	if (100000 <= Six  && Six <= 999999)
+	while (exchange == 1)
 	{
-		if (general == general2)
+		std::cout << "Введите сумму в рублях: ";
+		std::cin >> Rus;
+
+		USD = Rus / 92;
+		euro = Rus / 103;
+		farit = Rus / 37;
+		tenge = Rus / 0.2;
+
+		std::cout << "Введите номер валюты, которую вы выбрали:\n1)USD = 92.\n";
+		std::cout << "2)euro = 103.\n3)farit = 37.\n4)tenge = 0.2.\n";
+		std::cin >> inquiry;
+
+		commission = Rus * 5 * 0.01;
+
+		if (inquiry == 1)
 		{
-			std::cout << "Счастливое число";
+			std::cout << "Вам удалось купить: " << USD - USD * 5 * 0.01 << " Долларов.\n";
 		}
-		else if (general != general2)
+		else if (inquiry == 2)
 		{
-			std::cout << "Не счастливое число";
+			std::cout << "Вам удалось купить: " << euro - euro * 5 * 0.01 << " Евро.\n";
 		}
-	}
-	else
-	{
-		std::cerr << "error!!!!!!!!";
-	}
-	//---------------------------------------------
-
-	int number;
-	int number1, number2, number3, number4;
-	
-	std::cout << "\nзадание 2\nВведите четырехзначное число : ";
-	std::cin >> number;
-
-	number1 = int(number / 1000);
-	number2 = int(number % 1000 / 100);
-	number3 = int(number % 1000 % 100 /10);
-	number4 = int(number % 10);
-
-	if ( 1000 <= number && number <= 9999)
-	{
-		std::cout << number2 << number1 << number4 << number3;	
-	}
-	else
-	{
-		std::cout << "error!!!!!";
-	}
-	//--------------------------------------------------------------
-
-	int one, two, three, four, five, six, seven;
-
-	std::cout << "\nзадание 3";
-	std::cout << "\nвведите 7 чисел:\n1)";
-	std::cin >> one;
-	std::cout << "2)";
-	std::cin >> two;
-	std::cout << "3)";
-	std::cin >> three;
-	std::cout << "4)";
-	std::cin >> four;
-	std::cout << "5)";
-	std::cin >> five;
-	std::cout << "6)";
-	std::cin >> six;
-	std::cout << "7)";
-	std::cin >> seven;
-
-	if ( one > two)
-	{
-		if (one > three)
+		else if (inquiry == 3)
 		{
-			if (one > four)
-			{
-				if (one > five)
-				{
-					if (one > six)
-					{
-						if (one > seven)
-						{
-							std::cout << one;
-						}
-					}
+			std::cout << "Вам удалось купить: " << farit - farit * 5 * 0.01 << " Фаритов.\n";
+		}
+		else if (inquiry == 4)
+		{
+			std::cout << "Вам удалось купить: " << tenge - tenge * 5 * 0.01 << " Тенге.\n";
+		}
+		else
+		{
+			std::cout << "error\n";
+			continue;
+		}
 
-				}
-			}
-		}
-	}
-	else if (two > three)
-	{
-		if (two > four)
-		{
-			if (two > five)
-			{
-				if (two > six)
-				{
-					if (two > seven)
-					{
-						std::cout << two;
-					}
+		std::cout << "Коммиссия составила: " << commission << "Руб.\n";
+		std::cout << "Хотите продолжить обмен если да, то напишите 1 если нет то 2.\n";
+		std::cin >> exchange;
 
-				}
-			}
-		}
-	}
-	else if  (three > four)
-	{
-		if (three > five)
+		if (exchange == 1)
 		{
-			if (three > six)
-			{
-				if (three > seven)
-				{
-					std::cout << three;
-				}
-			}
+			exchange /= 1;
 		}
-	}
-	else if (four > five)
-	{
-		if (four > six)
+		else if (exchange == 2)
 		{
-			if (four > seven)
-			{
-				std::cout << four;
-			}
+			exchange += 100;
 		}
-	}
-	else if (five > six)
-	{
-		if (five > seven)
+		else
 		{
-			std::cout << five;
+			std::cout << "error\n";
 		}
-	}
-	else if (six > seven)
-	{
-		std::cout << six;
-	}
-	else
-	{
-		std::cout << seven;
-	}
 
+
+	}
 
 	return 0;
 }
