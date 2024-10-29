@@ -1,73 +1,95 @@
 #include <iostream>
 #include <Windows.h>
+#include <cstdlib>
 
 
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+	srand(time(NULL));
+
+	const int size = 12;
+	int bot[size]{}, min = 1000, max = 0;
 
 
-	float Rus, USD, euro, farit, tenge, commission, currency;
-	int exchange = 1, inquiry;
+	std::cout << "задание 1\n";
 
-	while (exchange == 1)
+	for (int i = 0; i < size; i++)
 	{
-		std::cout << "Введите сумму в рублях: ";
-		std::cin >> Rus;
-
-		USD = Rus / 92;
-		euro = Rus / 103;
-		farit = Rus / 37;
-		tenge = Rus / 0.2;
-
-		std::cout << "Введите номер валюты, которую вы выбрали:\n1)USD = 92.\n";
-		std::cout << "2)euro = 103.\n3)farit = 37.\n4)tenge = 0.2.\n";
-		std::cin >> inquiry;
-
-		commission = Rus * 5 * 0.01;
-
-		if (inquiry == 1)
-		{
-			std::cout << "Вам удалось купить: " << USD - USD * 5 * 0.01 << " Долларов.\n";
-		}
-		else if (inquiry == 2)
-		{
-			std::cout << "Вам удалось купить: " << euro - euro * 5 * 0.01 << " Евро.\n";
-		}
-		else if (inquiry == 3)
-		{
-			std::cout << "Вам удалось купить: " << farit - farit * 5 * 0.01 << " Фаритов.\n";
-		}
-		else if (inquiry == 4)
-		{
-			std::cout << "Вам удалось купить: " << tenge - tenge * 5 * 0.01 << " Тенге.\n";
-		}
-		else
-		{
-			std::cout << "error\n";
-			continue;
-		}
-
-		std::cout << "Коммиссия составила: " << commission << "Руб.\n";
-		std::cout << "Хотите продолжить обмен если да, то напишите 1 если нет то 2.\n";
-		std::cin >> exchange;
-
-		if (exchange == 1)
-		{
-			exchange /= 1;
-		}
-		else if (exchange == 2)
-		{
-			exchange += 100;
-		}
-		else
-		{
-			std::cout << "error\n";
-		}
-
-
+		bot[i] = rand() % 1000;
+		std::cout << bot[i] << " ";
 	}
+	std::cout << "\n";
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (bot[i] > max)
+		{
+			max = bot[i];
+		}
+	}
+	std::cout << "максимальное число: " << max;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (bot[i] < min)
+		{
+			min = bot[i];
+		}
+	}
+	std::cout << "\nминимальное число: " << min;
+
+
+	int  summa = 0, user;
+
+	std::cout << "\nзадание 2\n";
+	std::cout << "введите число диапазона от 0 до 1000(использется массив из первого задания): ";
+	std::cin >> user;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (user > bot[i])
+		{
+			summa += bot[i];
+		}
+	}
+	std::cout << "сумма равна " << summa;
+
+
+	int beginning, end;
+	int MIN = 10000000, MAX = 0;
+	const int SIZE = 12;
+	int money[SIZE]{};
+	std::cout << "\nзадание 3\n";
+	std::cout << "введите прибыль за каждый месяц: ";
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		std::cin >> money[SIZE];
+	}
+	std::cout << "введите  диапазон месяцев\nначало: ";
+	std::cin >> beginning;
+	std::cout << "конец: ";
+	std::cin >> end;
+
+	for (int i = beginning; i <= end; i++)
+	{
+		if (money[i] > MAX)
+		{
+			MAX = money[i];
+		}
+	}
+	std::cout << "\n" << MAX;
+
+	for (int i = beginning; i <= end; i++)
+	{
+		if (money[i] < MIN)
+		{
+			MIN = money[i];
+		}
+	}
+	std::cout << "\n" << MIN;
 
 	return 0;
 }
