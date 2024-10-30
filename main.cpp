@@ -57,39 +57,49 @@ int main()
 	std::cout << "сумма равна " << summa;
 
 
-	int beginning, end;
-	int MIN = 10000000, MAX = 0;
-	const int SIZE = 12;
-	int money[SIZE]{};
+
 	std::cout << "\nзадание 3\n";
 	std::cout << "введите прибыль за каждый мес€ц: ";
-
+	int const SIZE = 12;
+	int money[SIZE]{};
 	for (int i = 0; i < SIZE; i++)
 	{
-		std::cin >> money[SIZE];
+		std::cin >> money[i];
 	}
+
 	std::cout << "введите  диапазон мес€цев\nначало: ";
+	int beginning;
 	std::cin >> beginning;
 	std::cout << "конец: ";
+	int end;
 	std::cin >> end;
+	int big=0, maloe=10000000;
+	int month1, month2;
 
-	for (int i = beginning; i <= end; i++)
+	for (int i = beginning; i < end; i++)
 	{
-		if (money[i] > MAX)
+		if (money[i] > big)
 		{
-			MAX = money[i];
+			big = money[i];	
+		}
+		else if (money[i] < maloe)
+		{
+			maloe = money[i];
 		}
 	}
-	std::cout << "\n" << MAX;
-
-	for (int i = beginning; i <= end; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		if (money[i] < MIN)
+		if (money[i] == big)
 		{
-			MIN = money[i];
+			month1 = i + 1;
+		}
+		else if (money[i] == maloe)
+		{
+			month2 = i + 1;
 		}
 	}
-	std::cout << "\n" << MIN;
+	std::cout << month1 << " самый прибыльный мес€ц " << big << "р\n";
+	std::cout << month2 << " самый не прибыльный мес€ц " << maloe << "р";
 
 	return 0;
 }
